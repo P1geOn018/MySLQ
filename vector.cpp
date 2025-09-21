@@ -46,7 +46,7 @@ public:
     Rank search(T const &e) const { return (0 >= _size) ? -1 : search(e, 0, _size); }
     Rank search(T const &e, Rank lo, Rank hi) const;
     T &operator[](Rank r) const;
-    Vector<T> &operator=(Vecto<T> const &);
+    Vector<T> &operator=(Vector<T> const &);
     T remove(Rank r);
     int remove(Rank lo, Rank hi);
     Rank insert(Rank r, T const &e);
@@ -61,3 +61,24 @@ public:
     template <typename VST>
     void traverse(VST &);
 };
+
+template <typename T>
+void Vector<T>::copyFrom(T const* A,Rank lo,Rank hi)
+{
+    _elem = new T[_capacity = 2 * (hi - lo)];
+    _size = 0;
+    while (lo < hi)
+    {
+        _elem[_size++] = A[lo++];
+    }
+    
+}
+
+template <typename T>
+Vector<T>& Vector<T>::operator=(Vector<T> const& V)
+{
+    if(_elem)
+        delete[] _elem;
+    copyFrom(V._elem, 0, V._size());
+    return this *;
+}
