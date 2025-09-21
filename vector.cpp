@@ -82,3 +82,17 @@ Vector<T>& Vector<T>::operator=(Vector<T> const& V)
     copyFrom(V._elem, 0, V._size());
     return this *;
 }
+
+template <typename T>
+void Vector<T>::expand()
+{
+    if(_size<_capacity)
+        return;
+    if (_capacity <DEFAULT_CAPACITY)
+        _capacity = DEFAULT_CAPACITY;
+    T *oldelem = _elem;
+    _elem = new T[_capacity <<= 1];
+    for (int i = 0; i < _size;i++)
+        _elem[i] = oldelem[i];
+    delete[] oldelem;
+}
