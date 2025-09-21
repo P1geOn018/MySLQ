@@ -47,4 +47,5 @@ public:
     Rank search(T const &e, Rank lo, Rank hi) const;
     T &operator[](Rank r) const;
     Vector<T> &operator=(Vecto<T> const &);
+    T remove(Rank r);
 };
