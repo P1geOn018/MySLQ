@@ -48,4 +48,16 @@ public:
     T &operator[](Rank r) const;
     Vector<T> &operator=(Vecto<T> const &);
     T remove(Rank r);
+    int remove(Rank lo, Rank hi);
+    Rank insert(Rank r, T const &e);
+    Rank insert(T const &e) { return insert(_size, e); }
+    void sort(Rank lo, Rank hi);
+    void sort() { sort(0, _size); }
+    void unsort(Rank lo, Rank hi);
+    void unsort() { unsort(0, _size); }
+    int deduplicate();
+    int uniquify();
+    void traverse(void (*)(T &));
+    template <typename VST>
+    void traverse(VST &);
 };
