@@ -96,3 +96,39 @@ void Vector<T>::expand()
         _elem[i] = oldelem[i];
     delete[] oldelem;
 }
+template <typename T> void Vector<T>::shrink()
+{
+    if(_capacity < DEFAULT_CAPACITY << 1)
+        return;
+    if(_size << 2 > _capacity)
+        return;
+    T *oldElem = _elem;
+    _elem = new T[_capacity >>= 1];
+    for (int i = 0; i < _size;i++)
+        _elem[i] = oldElem[i];
+    delete[] oldElem;
+}
+
+template <typename T> T& Vector<T>::operator[](Rank r) const 
+{
+    return _elem[r];
+}
+
+template<typename T> void permute (Vector<T> &V )
+{
+    for (int i = V._size; i > 0;i--)
+    {
+        swap(V[i - 1], V[rand() % i]);
+    }
+}
+
+template <typename T>
+void Vector<T>::unsort(Rank lo,Rank hi)
+{
+    T *V = _elem + lo;
+    for (Rank i = hi - lo; i > 0;i--)
+    {
+        swap(V[i - 1], V[rand() % i]);
+    }
+}
+
