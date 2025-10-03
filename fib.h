@@ -1,9 +1,9 @@
 class Fib
 {
 private:
-    int f, g; // f = fib(k - 1), g = fib(k)¡£¾ùÎªintĞÍ£¬ºÜ¿ì¾Í»áÊıÖµÒç³ö
+    int f, g; // f = fib(k - 1), g = fib(k)ã€‚å‡ä¸ºintå‹ï¼Œå¾ˆå¿«å°±ä¼šæ•°å€¼æº¢å‡º
 public:
-    Fib(int n) // ³õÊ¼»¯Îª²»Ğ¡ÓÚnµÄ×îĞ¡FibonacciÏî
+    Fib(int n) // åˆå§‹åŒ–ä¸ºä¸å°äºnçš„æœ€å°Fibonaccié¡¹
     {
         f = 1;
         g = 0;
@@ -12,18 +12,18 @@ public:
     }
     int get()
     {
-        return g; // »ñÈ¡µ±Ç°FibonacciÏî£¬O(1)Ê±¼ä
+        return g; // è·å–å½“å‰Fibonaccié¡¹ï¼ŒO(1)æ—¶é—´
     }
     int next()
     {
         g += f;
         f = g - f;
-        return g; // ×ªÖÁÏÂÒ»FibonacciÏî£¬O(1)Ê±¼ä
+        return g; // è½¬è‡³ä¸‹ä¸€Fibonaccié¡¹ï¼ŒO(1)æ—¶é—´
     }
     int prev()
     {
         f = g - f;
         g -= f;
-        return g; // ×ªÖÁÉÏÒ»FibonacciÏî£¬O(1)Ê±¼ä
+        return g; // è½¬è‡³ä¸Šä¸€Fibonaccié¡¹ï¼ŒO(1)æ—¶é—´
     }
 };
