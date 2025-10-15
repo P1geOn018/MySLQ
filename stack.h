@@ -23,17 +23,17 @@ class Stack : public Vector<T>
 public:
     void push(T const &e)
     {
-        insert(size(), e);
+        this->insert(this->size(), e);
     }
 
     T pop()
     {
-        return remove(size() - 1);
+        return this->remove(this->size() - 1);
     }
 
     T &top()
     {
-        return (*this)[size() - 1];
+        return (*this)[this->size() - 1];
     }
 };
 
@@ -122,7 +122,7 @@ void append(char *&rpn, float opnd)
     int n = strlen(rpn);
     char buf[64];
     if (opnd != (float)(int)opnd)
-        sprintf(buf, "%.2f \0", opnd);
+        sprintf(buf, "%.2f ", opnd);
     else
         rpn = (char *)realloc(rpn, sizeof(char) * (n + strlen(buf) + 1));
     strcat(rpn, buf);
@@ -178,6 +178,8 @@ char orderBetween(char op1, char op2)
 
 float calcu(char s, float f1)
 {
+    if (s != '!')
+        exit(-1); // 或者返回错误值
     if (f1 == 0 || f1 == 1)
         return 1;
     float sum = 1;
